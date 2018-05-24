@@ -31,14 +31,28 @@ class MainActivity : AppCompatActivity() {
        var dm1 = DataModel("live", "100", "blablabla")
         dataModelList!!.add(dm1)
 
-        var dm11 = DataModel("dead", "160", "eeeeeeeeee")
+        var dm11 = DataModel("dead", "160", "eee\n" +
+                "fsjdjhbkjfg\n" +
+                "kkakaooeeeeeee")
         dataModelList!!.add(dm11)
 
-        var dm12 = DataModel("khakha", "94", "wwwwwwwwwwww")
+        var dm12 = DataModel("khakha", "94", "wwwwwwwwwwww\ndbfkjgfsjkdf\nfsjdjhbkjfg\nkkakaoo")
         dataModelList!!.add(dm12)
 
         var dm13 = DataModel("qqqq", "4141", "qqqqqqqq")
         dataModelList!!.add(dm13)
+
+        var dm14 = DataModel("live", "100", "blablabla")
+        dataModelList!!.add(dm14)
+
+        var dm15 = DataModel("dead", "160", "eeeeeeeeee")
+        dataModelList!!.add(dm15)
+
+        var dm16 = DataModel("khakha", "94", "wwwwwwwwwwww")
+        dataModelList!!.add(dm16)
+
+        var dm17 = DataModel("qqqq", "4141", "qqqqqqqq")
+        dataModelList!!.add(dm17)
 
     }
 }

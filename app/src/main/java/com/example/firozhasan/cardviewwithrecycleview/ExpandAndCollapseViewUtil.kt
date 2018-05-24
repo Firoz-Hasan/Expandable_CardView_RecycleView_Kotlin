@@ -1,11 +1,17 @@
-package com.example.firozhasan.cardviewwithrecycleview
+package com.danielme.android.cardview
 
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.Transformation
+import android.widget.ImageView
 
+import java.lang.reflect.Method
+
+/**
+ * Refactor from http://tech.chitgoks.com/2011/10/29/android-animation-to-expand-collapse-view-its-children/
+ */
 object ExpandAndCollapseViewUtil {
 
 
