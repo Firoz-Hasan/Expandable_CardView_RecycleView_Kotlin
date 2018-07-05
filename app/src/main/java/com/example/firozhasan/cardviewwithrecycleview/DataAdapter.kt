@@ -31,10 +31,9 @@ class DataAdapter(val items: ArrayList<DataModel>, val context: Context) : Recyc
         return items.size
     }
 
-    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
-        var dModel = items[position]
+        var dModel = items.get(position)
         holder.jstatus.text = dModel.jobStatus
         holder.application.text = dModel.application
         holder.more.text = dModel.more
