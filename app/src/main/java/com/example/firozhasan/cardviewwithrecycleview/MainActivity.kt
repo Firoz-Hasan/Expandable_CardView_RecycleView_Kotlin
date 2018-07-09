@@ -5,9 +5,17 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
+import android.util.Log
+import android.view.View
+import android.view.animation.Animation
+import android.view.animation.RotateAnimation
+import android.widget.ImageView
+import com.danielme.android.cardview.ExpandAndCollapseViewUtil
+import kotlinx.android.synthetic.main.applicants_list.*
 
 class MainActivity : AppCompatActivity() {
-
+    private val DURATION = 200
+    var expandimageview : ImageView? = null
     var dataModelList: ArrayList<DataModel> = ArrayList()
     var horizontalDataModelList: ArrayList<DataModelHorizontal> = ArrayList()
     var dataAdapter: DataAdapter? = null
@@ -18,7 +26,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.test_sayem)
+        setContentView(R.layout.activity_main)
+//        expandimageview = findViewById(R.id.imageViewExpand)
+//        expandimageview?.setOnClickListener {
+//            toggleDetails()
+//
+//        }
 
         recyclerView = findViewById(R.id.recyclerview)
         recyclerViewHorizontal = findViewById(R.id.horizontalRecyclerview)
@@ -119,4 +132,29 @@ class MainActivity : AppCompatActivity() {
         horizontalDataModelList!!.add(dm112)
 
     }
+
+//    fun toggleDetails(holder: MyViewHolder) {
+//        var visibility: Int = holder.moreActionDetails!!.visibility
+//
+//        if (visibility == View.GONE) {
+//            visibility = View.VISIBLE
+//            Log.d("debugg", "iftoggleDetails: $visibility")
+//            ExpandAndCollapseViewUtil.expand(holder.moreActionDetails!!, DURATION)
+//            holder.imageViewExpand!!.setImageResource(R.drawable.ic_arrow_downward)
+//            rotate(180.0f, holder)
+//        } else {
+//            ExpandAndCollapseViewUtil.collapse(holder.moreActionDetails!!, DURATION)
+//            Log.d("debugg", "elsetoggleDetails: $visibility")
+//            holder.imageViewExpand!!.setImageResource(R.drawable.ic_arrow_upward)
+//            rotate(-180.0f, holder)
+//        }
+//    }
+//
+//    private fun rotate(angle: Float, holder: MyViewHolder) {
+//        val animation = RotateAnimation(0.0f, angle, Animation.RELATIVE_TO_SELF, 0.5f,
+//                Animation.RELATIVE_TO_SELF, 0.5f)
+//        animation.fillAfter = true
+//        animation.duration = DURATION.toLong()
+//        holder.imageViewExpand!!.startAnimation(animation)
+//    }
 }
