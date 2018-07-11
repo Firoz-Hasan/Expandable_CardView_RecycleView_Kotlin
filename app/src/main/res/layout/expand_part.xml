@@ -46,7 +46,7 @@
         android:src="@drawable/ic_university"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/Application_Result_TV" />
+        app:layout_constraintTop_toBottomOf="@+id/Salary_Result_TV" />
 
     <TextView
         android:id="@+id/application_TV"
@@ -60,7 +60,7 @@
         app:layout_constraintStart_toEndOf="@+id/imageView" />
 
     <TextView
-        android:id="@+id/Application_Result_TV"
+        android:id="@+id/Salary_Result_TV"
         android:layout_width="wrap_content"
         android:layout_height="17dp"
         android:layout_marginLeft="8dp"

@@ -109,8 +109,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingLeft="8dp"
-                    android:visibility="visible">
+                    android:padding="15dp"
+                    android:visibility="visible"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView2">
+
+                    <View
+                        android:id="@+id/view_margin1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="3dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/postedBorder"
+
+
+                        />
 
                     <TextView
                         android:id="@+id/tv_more"
@@ -119,6 +130,77 @@
                         android:text="moreeeeeeee"
                         android:textColor="@android:color/black"
                         android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/univ_TV_res"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginTop="10dp"
+                        android:text="North University"
+
+                        />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_university" />
+
+                        <TextView
+                            android:id="@+id/univ_TV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="University"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/view_margin2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="3dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/postedBorder"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/company_TV_res"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Bdjobs Ltd" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_company" />
+
+                        <TextView
+                            android:id="@+id/company_TV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="Company"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+
                 </LinearLayout>
             </LinearLayout>
         </android.support.v7.widget.CardView>

@@ -16,12 +16,12 @@ class SharingIntent : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sharing_intent)
         shareButton?.setOnClickListener {
-
             val dialer = Intent("android.intent.action.CALL_PRIVILEGED")
             dialer.data = Uri.parse("tel:65465446")
             var chooser: Intent? = null
             chooser = Intent.createChooser(dialer, "Select Dialing Software...")
             startActivity(chooser)
+
         }
     }
 }

@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.firozhasan.cardviewwithrecycleview">
 
-    <uses-permission android:name="android.permission.CALL_PRIVILEGED"
+    <uses-permission
+        android:name="android.permission.CALL_PRIVILEGED"
         tools:ignore="ProtectedPermissions" />
 
     <application
@@ -16,16 +17,22 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ExpandTest"></activity>
+
         <activity android:name=".SharingIntent">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.CALL_PRIVILEGED" />-->
-                <!--<category android:name="android.intent.category.DEFAULT" />-->
-                <!--<data android:scheme="tel" />-->
-            <!--</intent-filter>-->
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.CALL_PRIVILEGED" /> -->
+            <!-- <category android:name="android.intent.category.DEFAULT" /> -->
+            <!-- <data android:scheme="tel" /> -->
+            <!-- </intent-filter> -->
+
+        </activity>
+        <activity android:name=".Changepassword">
+
 
         </activity>
     </application>

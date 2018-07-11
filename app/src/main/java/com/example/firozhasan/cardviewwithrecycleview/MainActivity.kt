@@ -1,25 +1,102 @@
 package com.example.firozhasan.cardviewwithrecycleview
 
+import android.app.ProgressDialog
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
-import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
-import android.view.animation.Animation
-import android.view.animation.RotateAnimation
 import android.widget.ImageView
-import com.danielme.android.cardview.ExpandAndCollapseViewUtil
-import kotlinx.android.synthetic.main.applicants_list.*
+import android.widget.TextView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), Callback {
+
+
+    internal var tv_callPerson: TextView? = null
+    internal var tv_emailPerson: TextView? = null
+    internal var tv_textPerson: TextView? = null
+    internal var prgDialog: ProgressDialog? = null
+
+
+    override fun onItemlick() {
+
+        callsmsemailChooser()
+
+    }
+
+    private fun callsmsemailChooser() {
+        val builder: android.app.AlertDialog.Builder
+        val alertDialog: android.app.AlertDialog
+
+        val linf = LayoutInflater.from(this@MainActivity)
+        val inflator = linf.inflate(R.layout.callmsg, null)
+        builder = android.app.AlertDialog.Builder(this@MainActivity)
+        builder.setView(inflator)
+        alertDialog = builder.create()
+        InitViews(inflator, alertDialog)
+        alertDialog.setCancelable(true)
+        alertDialog.show()
+    }
+
+    private fun InitViews(inflator: View, alertDialog: android.app.AlertDialog) {
+
+        tv_callPerson = inflator.findViewById(R.id.tv_title_up_cam) as TextView
+        tv_emailPerson = inflator.findViewById(R.id.tv_title_up_fb) as TextView
+        tv_textPerson = inflator.findViewById(R.id.tv_title_up_gall) as TextView
+
+
+        prgDialog = ProgressDialog(this@MainActivity)
+        prgDialog!!.setCancelable(false)
+
+        // Setting up OnClickListener
+        tv_callPerson!!.setOnClickListener(View.OnClickListener {
+            val intent = Intent(Intent.ACTION_DIAL)
+            intent.data = Uri.parse("tel:0123456789")
+            startActivity(intent)
+            alertDialog.dismiss()
+        })
+        tv_emailPerson!!.setOnClickListener(View.OnClickListener {
+            //Toast.makeText(getActivity(), "clicked2!", Toast.LENGTH_SHORT).show();
+            val mailto = "mailto:bob@example.org"
+
+            val emailIntent = Intent(Intent.ACTION_SENDTO)
+            emailIntent.data = Uri.parse(mailto)
+
+            try {
+                startActivity(emailIntent)
+            } catch (e: ActivityNotFoundException) {
+                //TODO: Handle case where no email app is available
+            }
+
+
+            alertDialog.dismiss()
+        })
+        tv_textPerson!!.setOnClickListener(View.OnClickListener {
+            // Toast.makeText(getActivity(), "clicked3!", Toast.LENGTH_SHORT).show();
+            val smsIntent = Intent(android.content.Intent.ACTION_VIEW)
+            smsIntent.type = "vnd.android-dir/mms-sms"
+            smsIntent.putExtra("address", "your desired phoneNumber")
+            smsIntent.putExtra("sms_body", "your desired message")
+            startActivity(smsIntent)
+            alertDialog.dismiss()
+           })
+    }
+
     private val DURATION = 200
-    var expandimageview : ImageView? = null
+    var expandimageview: ImageView? = null
     var dataModelList: ArrayList<DataModel> = ArrayList()
     var horizontalDataModelList: ArrayList<DataModelHorizontal> = ArrayList()
+    var dataModelApplicantsList: ArrayList<DataModelApplicants> = ArrayList()
+
     var dataAdapter: DataAdapter? = null
     var dataAdapterHorizontal: DataAdapterHorizontal? = null
+    var dataAdapterApplicantsList: DataAdapterApplicationLists? = null
+
     var recyclerView: RecyclerView? = null
     var recyclerViewHorizontal: RecyclerView? = null
     var toolbarcard: Toolbar? = null
@@ -36,10 +113,15 @@ class MainActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerview)
         recyclerViewHorizontal = findViewById(R.id.horizontalRecyclerview)
 
-        dataAdapter = DataAdapter(dataModelList!!, applicationContext)
-        dataAdapterHorizontal = DataAdapterHorizontal(horizontalDataModelList, applicationContext)
+        //  dataAdapter = DataAdapter(dataModelList!!, applicationContext)
+        dataAdapterApplicantsList = DataAdapterApplicationLists(dataModelApplicantsList, this@MainActivity)
 
-        recyclerView!!.adapter = dataAdapter
+        dataAdapterHorizontal = DataAdapterHorizontal(horizontalDataModelList, this@MainActivity)
+
+        //  recyclerView!!.adapter = dataAdapter
+        //  recyclerView!!.setHasFixedSize(true)
+
+        recyclerView!!.adapter = dataAdapterApplicantsList
         recyclerView!!.setHasFixedSize(true)
 
         recyclerViewHorizontal!!.adapter = dataAdapterHorizontal
@@ -55,6 +137,7 @@ class MainActivity : AppCompatActivity() {
 
         prepareData()
         prepareHoriData()
+        prepareApplicantsList()
     }
 
     private fun prepareData() {
@@ -100,8 +183,6 @@ class MainActivity : AppCompatActivity() {
         dataModelList!!.add(dm112)
 
 
-
-
     }
 
     private fun prepareHoriData() {
@@ -133,28 +214,14 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-//    fun toggleDetails(holder: MyViewHolder) {
-//        var visibility: Int = holder.moreActionDetails!!.visibility
-//
-//        if (visibility == View.GONE) {
-//            visibility = View.VISIBLE
-//            Log.d("debugg", "iftoggleDetails: $visibility")
-//            ExpandAndCollapseViewUtil.expand(holder.moreActionDetails!!, DURATION)
-//            holder.imageViewExpand!!.setImageResource(R.drawable.ic_arrow_downward)
-//            rotate(180.0f, holder)
-//        } else {
-//            ExpandAndCollapseViewUtil.collapse(holder.moreActionDetails!!, DURATION)
-//            Log.d("debugg", "elsetoggleDetails: $visibility")
-//            holder.imageViewExpand!!.setImageResource(R.drawable.ic_arrow_upward)
-//            rotate(-180.0f, holder)
-//        }
-//    }
-//
-//    private fun rotate(angle: Float, holder: MyViewHolder) {
-//        val animation = RotateAnimation(0.0f, angle, Animation.RELATIVE_TO_SELF, 0.5f,
-//                Animation.RELATIVE_TO_SELF, 0.5f)
-//        animation.fillAfter = true
-//        animation.duration = DURATION.toLong()
-//        holder.imageViewExpand!!.startAnimation(animation)
-//    }
+    private fun prepareApplicantsList() {
+
+
+        for (i in 1..10) {
+            var dm1 = DataModelApplicants("aaa", "bbb", "bbb", "ddd", "eee")
+            dataModelApplicantsList!!.add(dm1)
+        }
+    }
+
+
 }
