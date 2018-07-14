@@ -1,36 +1,39 @@
 package com.example.firozhasan.cardviewwithrecycleview
 
 import android.content.Context
+import android.graphics.Color
+import android.net.Uri
 import android.os.Build
-import android.support.annotation.IntegerRes
 import android.support.annotation.RequiresApi
 import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.Toolbar
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.Animation
-import android.view.animation.RotateAnimation
-import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
-import com.danielme.android.cardview.ExpandAndCollapseViewUtil
-import com.example.firozhasan.cardviewwithrecycleview.R.id.imageViewExpand
-import java.lang.Boolean.TRUE
 
 
 class DataAdapterHorizontal(val items: ArrayList<DataModelHorizontal>, val context: Context) : RecyclerView.Adapter<DataAdapterHorizontal.MyViewHolderHorizontal>() {
+
+    var selectedPosition = -1
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
     override fun onBindViewHolder(holder: MyViewHolderHorizontal, position: Int) {
 //
         var dModel = items.get(position)
-        holder.application.text = dModel.application
+        holder.number_Value.text = dModel.application
+        holder.string_Value.text = dModel.value
 
-        holder.application.setOnClickListener {
+        if(selectedPosition==position) {
+            holder.number_Value.setBackgroundResource(R.drawable.circle1)
+           // holder.number_Value.setTextColor(Color.parseColor("#F2F2F2"))
+        }
+        else
+            holder.number_Value.setBackgroundResource(R.drawable.circle)
 
-            holder.application.background = 
+
+        holder.number_Value.setOnClickListener {
+            selectedPosition=position
+            notifyDataSetChanged()
 
         }
     }
@@ -47,7 +50,8 @@ class DataAdapterHorizontal(val items: ArrayList<DataModelHorizontal>, val conte
 
     class MyViewHolderHorizontal(itemView: View?) : RecyclerView.ViewHolder(itemView) {
 
-        var application: TextView = itemView!!.findViewById(R.id.application_TV)
+        var number_Value: TextView = itemView!!.findViewById(R.id.number_TV)
+        var string_Value: TextView = itemView!!.findViewById(R.id.value_TV)
 
     }
 }

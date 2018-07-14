@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity(), Callback {
             smsIntent.putExtra("sms_body", "your desired message")
             startActivity(smsIntent)
             alertDialog.dismiss()
-           })
+        })
     }
 
     private val DURATION = 200
@@ -187,30 +187,11 @@ class MainActivity : AppCompatActivity(), Callback {
 
     private fun prepareHoriData() {
 
-        var dm1 = DataModelHorizontal("live")
-        horizontalDataModelList!!.add(dm1)
-        var dm11 = DataModelHorizontal("bbb")
-        horizontalDataModelList!!.add(dm11)
-        var dm12 = DataModelHorizontal("live")
-        horizontalDataModelList!!.add(dm12)
-        var dm13 = DataModelHorizontal("bbb")
-        horizontalDataModelList!!.add(dm13)
-        var dm14 = DataModelHorizontal("live")
-        horizontalDataModelList!!.add(dm14)
-        var dm15 = DataModelHorizontal("bbb")
-        horizontalDataModelList!!.add(dm15)
-        var dm16 = DataModelHorizontal("live")
-        horizontalDataModelList!!.add(dm16)
-        var dm17 = DataModelHorizontal("bbb")
-        horizontalDataModelList!!.add(dm17)
-        var dm18 = DataModelHorizontal("live")
-        horizontalDataModelList!!.add(dm18)
-        var dm19 = DataModelHorizontal("bbb")
-        horizontalDataModelList!!.add(dm19)
-        var dm111 = DataModelHorizontal("live")
-        horizontalDataModelList!!.add(dm111)
-        var dm112 = DataModelHorizontal("bbb")
-        horizontalDataModelList!!.add(dm112)
+        for (i in 1..10) {
+            var dm112 = DataModelHorizontal(i.toString(), "abcde")
+            horizontalDataModelList!!.add(dm112)
+        }
+
 
     }
 

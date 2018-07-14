@@ -7,7 +7,7 @@
     android:id="@+id/CV_postedJob"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
+    android:layout_margin="4dp"
     android:elevation="8dp"
     android:theme="@style/Theme.AppCompat.Light.NoActionBar"
     app:cardCornerRadius="4dp">
@@ -66,8 +66,8 @@
                 android:layout_marginStart="8dp"
                 android:background="@color/postedBorder"
                 android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="@+id/application_TV"
-                app:layout_constraintStart_toEndOf="@+id/application_TV"
+                app:layout_constraintBottom_toBottomOf="@+id/number_TV"
+                app:layout_constraintStart_toEndOf="@+id/number_TV"
                 app:layout_constraintTop_toTopOf="@+id/Salary_Result_TV" />
 
             <View
@@ -140,7 +140,7 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/application_TV"
+                android:id="@+id/number_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"

@@ -4,9 +4,9 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:fitsSystemWindows="true"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbarLayout"
@@ -25,25 +25,30 @@
     </android.support.design.widget.AppBarLayout>
 
 
-        <LinearLayout
+    <LinearLayout
+        android:id="@+id/LL1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appbarLayout"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+
+            android:id="@+id/horizontalRecyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/appbarLayout"
-            android:orientation="vertical">
+            app:layout_scrollFlags="scroll|enterAlways"
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/horizontalRecyclerview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_scrollFlags="scroll|enterAlways"
+            />
 
-                />
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
 
-                />
-        </LinearLayout>
+            />
+    </LinearLayout>
 
 </RelativeLayout>
